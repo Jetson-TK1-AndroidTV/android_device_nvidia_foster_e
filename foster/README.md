@@ -1,5 +1,5 @@
 
-<img alt="Nvidia Jetson TK1" src="http://quickreachmedia.sytes.net/pics/nvidia-jetson-tk1.jpg" />
+<img alt="Nvidia Jetson TK1" src="http://www.nvidia.com/content/tegra/images/jetson/jetson-tk1.png" />
 
 #About Tegra K1
 
