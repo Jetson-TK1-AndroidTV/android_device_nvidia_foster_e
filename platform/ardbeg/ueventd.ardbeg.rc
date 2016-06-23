@@ -185,3 +185,15 @@
 /sys/devices/platform/tegra12-i2c.0/i2c-0/0-00*	bmpX80/delay	0660	system	system
 /sys/devices/platform/tegra12-i2c.0/i2c-0/0-00*	bmpX80/max_range	0660	system	system
 /sys/devices/platform/tegra12-i2c.0/i2c-0/0-00*	bmpX80/resolution	0660	system	system
+
+# for HDD nodes
+/sys/devices/platform/tegra-sata* ata1/power/control    0660    system system
+/sys/devices/platform/tegra-sata* ata1/host0/target0:0:0/0:0:0:0/power/autosuspend_delay_ms    0660    system system
+/sys/devices/platform/tegra-sata* ata1/host0/target0:0:0/0:0:0:0/power/control    0660    system system
+
+#Gamepad reset
+/sys/devices/platform/gamepad*	gamepad_reset	0220	system	system
+
+#Blake touchpad node
+/sys/devices/platform/ozwpan/*	mode		0660	system	system
+/sys/devices/platform/tegra-xhci/*	mode		0660	system	system

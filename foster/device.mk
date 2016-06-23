@@ -20,9 +20,6 @@
 PRODUCT_AAPT_CONFIG := normal large xlarge hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
-## Common product locale
-PRODUCT_LOCALES += en_US
-
 ## Common packages
 $(call inherit-product-if-exists, vendor/nvidia/tegra/core/nvidia-tegra-vendor.mk)
 $(call inherit-product-if-exists, vendor/nvidia/tegra/core/android/t124/full.mk)
@@ -36,8 +33,11 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 
 # Boot Animation
-# PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/bootanimation.zip:system/media/bootanimation.zip
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/bootanimation.zip:system/media/bootanimation.zip
+
+# Atheros Wifi Loader
+$(LOCAL_PATH)/ath9k_loader.sh:system/bin/ath9k_loader.sh
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
@@ -86,13 +86,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libwpa_client \
     hostapd \
-    dhcpcd.conf \
+    dhcp.conf \
     wpa_supplicant \
     wpa_supplicant.conf
-
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+    $(LOCAL_PATH)/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=15
+    wifi.interface=wlan0
 
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
 
@@ -120,7 +121,7 @@ REFERENCE_DEVICE := ardbeg
 
 PRODUCT_PACKAGES += \
     AppDrawer \
-    CMLeanbackCustomizer \
+    LeanbackCustomizer \
     LeanbackLauncher \
     LeanbackIme \
     Settings \
@@ -216,14 +217,12 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp \
     ro.adb.secure=0
 
-# Set up device overlays
+# Set up tv device overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 $(call inherit-product-if-exists, hardware/nvidia/tegra124/tegra124.mk)
 $(call inherit-product-if-exists, vendor/nvidia/proprietary-tegra124/tegra124-vendor.mk)
-#$(call inherit-product-if-exists, vendor/nvidia/shieldtablet/shieldtablet-vendor.mk)
 $(call inherit-product-if-exists, vendor/nvidia/shield_common/blake32-blobs.mk)
-#$(call inherit-product, vendor/nvidia/jetsontk1/device-vendor.mk)
 $(call inherit-product, vendor/nvidia/jetson/jetson-vendor.mk)
 $(call inherit-product-if-exists, vendor/google/atv/atv-vendor.mk)
 $(call inherit-product-if-exists, vendor/widevine/jetsontk1/device-partial.mk)

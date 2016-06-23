@@ -52,7 +52,7 @@ TARGET_KERNEL_HAVE_NTSF =: true
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_CMDLINE := androidboot.hardware=jetson-tk1 vmalloc=500M
+BOARD_KERNEL_CMDLINE := androidboot.hardware=jetson-tk1 vmalloc=500M androidboot.selinux=permissive 
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x01000000 --ramdisk_offset 0x02100000 --tags_offset 0x02000000
 
 # U-boot

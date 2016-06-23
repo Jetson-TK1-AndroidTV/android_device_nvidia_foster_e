@@ -1,2 +1,0 @@
-# android_device_nvidia_foster_e
-android_device_nvidia_foster_e

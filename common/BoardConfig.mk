@@ -18,29 +18,6 @@ ifeq ($(SECURE_OS_BUILD),tlk)
 	BOARD_VENDOR_HDCP_PATH ?= vendor/nvidia/tegra/tests-partner/hdcp
 endif
 
-# common sepolicy
-# try to detect AOSP master-based policy vs small KitKat policy
-ifeq ($(PLATFORM_IS_AFTER_KITKAT),)
-# KitKat based board specific sepolicy
-BOARD_SEPOLICY_DIRS := device/nvidia/common/sepolicy/
-BOARD_SEPOLICY_UNION := \
-	te_macros
-BOARD_SEPOLICY_UNION += \
-	app.te \
-	comms.te \
-	domain.te \
-	file_contexts \
-	file.te \
-	genfs_contexts \
-	healthd.te \
-	netd.te \
-	untrusted_app.te \
-	usb.te \
-	ussr_setup.te \
-	ussrd.te \
-	vold.te \
-
-else
 # AOSP master based board specific sepolicy
 BOARD_SEPOLICY_DIRS := device/nvidia/common/sepolicy_aosp/
 BOARD_SEPOLICY_UNION := \
@@ -83,5 +60,3 @@ BOARD_SEPOLICY_UNION += \
 	wpa.te \
 	zygote.te \
 	healthd.te
-
-endif

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
 **
 ** Copyright 2011, The Android Open Source Project
@@ -41,11 +40,13 @@
     <storage android:mountPoint="/storage/sdcard1"
                         android:storageDescription="@string/storage_sd_card"
                         android:removable="true" />
-    <storage android:mountPoint="/storage/satadrive"
-                        android:storageDescription="@string/storage_sd_card"
-                        android:removable="true" />
     <storage android:mountPoint="/storage/usbdrive"
                         android:storageDescription="@string/storage_usb"
                         android:removable="true" />
+    <storage android:mountPoint="/storage/usbdrive2"
+                        android:storageDescription="@string/storage_usb"
+                        android:removable="true" />
+    <storage android:mountPoint="/storage/usbdrive3"
+                        android:storageDescription="@string/storage_usb"
+                        android:removable="true" />
 </StorageList>
-

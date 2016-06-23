@@ -143,15 +143,8 @@ BOARD_HAVE_LBH_SUPPORT := false
 MAX_EGL_CACHE_SIZE := 4194304
 MAX_EGL_CACHE_ENTRY_SIZE := 262144
 
-# sepolicy
-# try to detect AOSP master-based policy vs small KitKat policy
-ifeq ($(wildcard external/sepolicy/lmkd.te),)
-# KitKat based board specific sepolicy
-BOARD_SEPOLICY_DIRS += device/nvidia/platform/ardbeg/sepolicy/
-else
 # AOSP master based board specific sepolicy
 BOARD_SEPOLICY_DIRS += device/nvidia/platform/ardbeg/sepolicy_aosp/
-endif
 
 include device/nvidia/common/BoardConfig.mk
 

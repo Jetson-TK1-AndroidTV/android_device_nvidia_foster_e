@@ -17,6 +17,14 @@ LOCAL_PATH := $(call my-dir)
 
 subdir_makefiles := \
 	$(LOCAL_PATH)/liblights/Android.mk \
-	$(LOCAL_PATH)/power/Android.mk
+	$(LOCAL_PATH)/power/Android.mk \
+
+ifeq ($(TARGET_DEVICE), shieldtablet)
+subdir_makefiles += \
+	$(LOCAL_PATH)/sensors_514/Android.mk
+else
+subdir_makefiles += \
+	$(LOCAL_PATH)/sensors/Android.mk
+endif
 
 include $(subdir_makefiles) 

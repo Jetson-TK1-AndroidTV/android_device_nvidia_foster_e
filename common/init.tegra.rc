@@ -30,11 +30,12 @@ on init
     symlink /storage/emulated/legacy /storage/sdcard0
     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
 
-    # create directory for mounting usb drives
+    # create directory for mounting usb sata drives
     mkdir /mnt/media_rw/usbdrive 0700 media_rw media_rw
     mkdir /storage/usbdrive 0700 root root
     symlink /mnt/media_rw/usbdrive /storage/usbdrive
     symlink /mnt/media_rw/usbdrive /usbdrive
+
 
     # create directory for mounting calibration partition
     mkdir /mnt/factory 0666 system system
@@ -166,7 +167,7 @@ service bugreport /system/bin/dumpstate -d -p -B -o /data/data/com.android.shell
 # Mount usb drives as /usbdrive. Generally usb drives are formatted with FAT
 # filesystem, so we support FAT as of now.
 on device-added-/sys/block/sda
-  mount vfat /dev/block/sda /mnt/media_rw/usbdrive
+  mount /dev/block/sda /mnt/media_rw/usbdrive
 
 on device-removed-/sys/block/sda
   umount /mnt/media_rw/usbdrive

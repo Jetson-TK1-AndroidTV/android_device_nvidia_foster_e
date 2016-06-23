@@ -21,14 +21,11 @@
 # lines, aosp and jetson, hence its name.
 #
 
-PRODUCT_PROPERTY_OVERRIDES := \
-       net.dns1=8.8.8.8 \
-       net.dns2=8.8.4.4
-
 # Inherit from those products. Most specific first.
 $(call inherit-product, device/nvidia/foster/device.mk)
 $(call inherit-product, device/nvidia/foster/device-common.mk)
 $(call inherit-product, device/google/atv/products/atv_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/locales_full.mk)
 
 PRODUCT_NAME := foster_e
 PRODUCT_DEVICE := foster
